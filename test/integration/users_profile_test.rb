@@ -18,5 +18,10 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     @user.microposts.paginate(page: 1).each do |micropost|
       assert_match micropost.content, response.body
     end
+    #Test for stats
+    assert_select 'strong', @user.following.count
+    assert_select 'a[href=?]', following_user_path(@user)
+    assert_select 'strong', @user.followers.count
+    assert_select 'a[href=?]', followers_user_path(@user)
   end
 end
