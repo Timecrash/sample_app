@@ -6,6 +6,7 @@ Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
   fixtures :all
+  include ApplicationHelper
 
   #Returns true if a test user is logged in.
   def is_logged_in?
